@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saeed Khan's Portfolio</title>
+    <title>Saeed Khan - Data Scientist Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,12 +15,17 @@
         }
         
         body {
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
-            padding: 0;
-            margin: 0;
+            background: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .row {
@@ -28,12 +34,17 @@
             margin: 0 -15px;
         }
         
+        .col-six {
+            width: 50%;
+            padding: 0 15px;
+        }
+        
         .col-twelve {
             width: 100%;
             padding: 0 15px;
         }
         
-        /* Header */
+        /* Header Styles */
         header {
             background: #151515;
             padding: 20px 0;
@@ -43,65 +54,65 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
-        .top-bar {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
         
-        .text-logo a {
+        .logo a {
             color: #fff;
             text-decoration: none;
             font-size: 24px;
             font-weight: 700;
         }
         
-        .main-navigation {
+        .nav-menu {
             display: flex;
             list-style: none;
         }
         
-        .main-navigation li {
+        .nav-menu li {
             margin: 0 15px;
         }
         
-        .main-navigation a {
+        .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-size: 16px;
             transition: color 0.3s ease;
         }
         
-        .main-navigation a:hover {
+        .nav-menu a:hover {
             color: #FF0077;
         }
         
-        /* Intro Section */
-        #intro {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #333;
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #333;
             color: #fff;
-            padding: 150px 0 100px;
+            padding: 180px 0 100px;
             text-align: center;
         }
         
-        .intro-content h5 {
+        .hero-content h5 {
             font-size: 24px;
             margin-bottom: 15px;
             color: #FF0077;
         }
         
-        .intro-content h1 {
+        .hero-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            font-weight: 700;
         }
         
-        .intro-position {
+        .hero-position {
             font-size: 20px;
             margin-bottom: 30px;
         }
         
-        .button {
+        .btn {
             display: inline-block;
             padding: 12px 30px;
             background: #FF0077;
@@ -113,44 +124,52 @@
             margin: 10px;
         }
         
-        .button:hover {
+        .btn:hover {
             background: #fff;
             color: #FF0077;
         }
         
-        .intro-social {
+        .btn-primary {
+            background: #333;
+        }
+        
+        .btn-primary:hover {
+            background: #FF0077;
+            color: #fff;
+        }
+        
+        .social-icons {
             display: flex;
             justify-content: center;
             list-style: none;
             margin-top: 40px;
         }
         
-        .intro-social li {
+        .social-icons li {
             margin: 0 15px;
         }
         
-        .intro-social a {
+        .social-icons a {
             color: #fff;
             font-size: 24px;
             transition: color 0.3s ease;
         }
         
-        .intro-social a:hover {
+        .social-icons a:hover {
             color: #FF0077;
         }
         
-        /* About Section */
-        #about {
+        /* Section Styles */
+        section {
             padding: 100px 0;
-            background: #fff;
         }
         
-        .section-intro {
+        .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
-        .section-intro h5 {
+        .section-title h5 {
             color: #FF0077;
             font-size: 18px;
             text-transform: uppercase;
@@ -158,50 +177,58 @@
             margin-bottom: 10px;
         }
         
-        .section-intro h1 {
+        .section-title h1 {
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 20px;
         }
         
-        .intro-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .intro-info img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 30px;
-            border: 5px solid #f0f0f0;
-        }
-        
-        .intro-info .lead {
-            max-width: 800px;
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 40px;
+        /* About Section */
+        #about {
+            background: #fff;
         }
         
         .about-content {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 50px;
+            align-items: center;
         }
         
-        .tab-full {
-            flex: 1;
-            min-width: 300px;
+        .profile-img {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .profile-img div {
+            width: 250px;
+            height: 250px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .profile-img i {
+            font-size: 100px;
+            color: #ccc;
+        }
+        
+        .about-text {
             padding: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
         }
         
         .info-list {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
         .info-list li {
@@ -212,19 +239,38 @@
         .info-list strong {
             min-width: 120px;
             margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category {
+            margin-bottom: 40px;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #FF0077;
         }
         
         .skill-bars {
             list-style: none;
-            margin-top: 20px;
         }
         
         .skill-bars li {
-            height: 6px;
+            height: 20px;
             background: #e0e0e0;
             width: 100%;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             position: relative;
+            border-radius: 10px;
         }
         
         .progress {
@@ -233,287 +279,222 @@
             top: 0;
             height: 100%;
             background: #FF0077;
+            border-radius: 10px;
         }
         
         .progress span {
             position: absolute;
-            right: -25px;
+            right: -40px;
             top: -30px;
             font-weight: 600;
             color: #333;
+            font-size: 16px;
         }
         
         .skill-bars strong {
             position: absolute;
-            left: 0;
+            left: 15px;
             top: -30px;
             font-weight: 600;
-        }
-        
-        .button-section {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .button-primary {
-            background: #333;
-        }
-        
-        .button-primary:hover {
-            background: #FF0077;
-            color: #fff;
+            font-size: 16px;
         }
         
         /* Resume Section */
         #resume {
             background: #f5f5f5;
-            padding: 100px 0;
         }
         
-        .resume-timeline {
-            margin-bottom: 60px;
+        .resume-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .resume-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .resume-header h2 {
-            font-size: 30px;
-            color: #333;
-        }
-        
-        .timeline-wrap {
+        .timeline {
             position: relative;
-            padding: 20px 0;
+            padding-left: 50px;
         }
         
-        .timeline-wrap::before {
+        .timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
+            left: 15px;
             top: 0;
             bottom: 0;
             width: 2px;
             background: #FF0077;
-            transform: translateX(-50%);
         }
         
-        .timeline-block {
-            display: flex;
-            margin-bottom: 40px;
+        .timeline-item {
             position: relative;
+            margin-bottom: 40px;
         }
         
-        .timeline-ico {
-            width: 50px;
-            height: 50px;
+        .timeline-icon {
+            position: absolute;
+            left: -44px;
+            top: 0;
+            width: 30px;
+            height: 30px;
             background: #FF0077;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-        
-        .timeline-header {
-            width: 45%;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
         .timeline-content {
-            width: 45%;
+            background: #f9f9f9;
             padding: 20px;
-            background: #fff;
-            border-radius: 5px;
+            border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .timeline-block:nth-child(odd) .timeline-header {
-            margin-right: auto;
+        .timeline-content h3 {
+            color: #FF0077;
+            margin-bottom: 10px;
         }
         
-        .timeline-block:nth-child(odd) .timeline-content {
-            margin-left: auto;
+        .timeline-content .date {
+            color: #777;
+            margin-bottom: 15px;
+            font-style: italic;
         }
         
-        .timeline-block:nth-child(even) .timeline-header {
-            margin-left: auto;
-            order: 2;
+        .timeline-content h4 {
+            margin-bottom: 15px;
+            color: #333;
         }
         
-        .timeline-block:nth-child(even) .timeline-content {
-            margin-right: auto;
-        }
-        
-        /* Portfolio Section */
+        /* Projects Section */
         #projects {
-            padding: 100px 0;
             background: #151515;
             color: #fff;
         }
         
-        #projects .section-intro h1 {
+        #projects .section-title h1 {
             color: #fff;
         }
         
-        .portfolio-content {
-            margin-bottom: 50px;
-        }
-        
-        /* Portfolio Grid */
-        .block-1-2 {
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
         
         @media (max-width: 768px) {
-            .block-1-2 {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
         
-        /* Folio Item */
-        .folio-item {
-            position: relative;
-            overflow: hidden;
+        .project-card {
+            background: #222;
             border-radius: 8px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .folio-item:hover {
+        .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
         }
         
-        .item-wrap {
-            position: relative;
-            height: 300px;
+        .project-img {
+            height: 200px;
             overflow: hidden;
         }
         
-        .item-wrap img {
+        .project-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
         
-        .folio-item:hover img {
+        .project-card:hover .project-img img {
             transform: scale(1.05);
         }
         
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .folio-item:hover .overlay {
-            opacity: 1;
-        }
-        
-        .folio-item-table {
-            text-align: center;
+        .project-info {
             padding: 20px;
         }
         
-        .folio-title {
-            color: #fff;
-            font-size: 20px;
+        .project-info h3 {
             margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 20px;
         }
         
-        .folio-types {
+        .project-type {
             color: #FF0077;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .project-info p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         /* Services Section */
         #services {
-            padding: 100px 0;
             background: #fff;
-            position: relative;
         }
         
-        .services-content {
-            margin-top: 50px;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
-        .services-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .service {
-            width: 300px;
-            padding: 30px;
-            margin: 15px;
+        .service-card {
             background: #f9f9f9;
+            padding: 30px;
             border-radius: 8px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .service:hover {
+        .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .service .icon {
+        .service-icon {
             font-size: 48px;
             color: #FF0077;
             margin-bottom: 20px;
         }
         
-        .service h3 {
+        .service-card h3 {
             margin-bottom: 15px;
             font-size: 20px;
         }
         
         /* Stats Section */
         #stats {
-            padding: 80px 0;
             background: #FF0077;
             color: #fff;
             text-align: center;
         }
         
-        .stats-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
         }
         
-        .stat {
-            width: 200px;
+        .stat-item {
             padding: 20px;
-            margin: 15px;
         }
         
-        .stat .icon-part {
+        .stat-icon {
             font-size: 48px;
             margin-bottom: 15px;
         }
@@ -526,37 +507,45 @@
         
         /* Contact Section */
         #contact {
-            padding: 100px 0;
             background: #f5f5f5;
         }
         
-        .contact-form {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
+        .contact-container {
             background: #fff;
-            border-radius: 8px;
+            padding: 40px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .form-field {
+        .contact-form {
+            margin-bottom: 50px;
+        }
+        
+        .form-group {
             margin-bottom: 20px;
         }
         
-        .form-field input,
-        .form-field textarea {
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            font-family: 'Poppins', sans-serif;
         }
         
-        .form-field textarea {
+        .form-group textarea {
             min-height: 150px;
         }
         
-        .submitform {
+        .submit-btn {
             background: #FF0077;
             color: #fff;
             border: none;
@@ -568,25 +557,22 @@
             transition: background 0.3s ease;
         }
         
-        .submitform:hover {
+        .submit-btn:hover {
             background: #333;
         }
         
         .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
-        .tab-full {
-            flex: 1;
-            min-width: 250px;
+        .contact-item {
             text-align: center;
             padding: 20px;
         }
         
-        .tab-full .icon {
+        .contact-icon {
             font-size: 36px;
             color: #FF0077;
             margin-bottom: 15px;
@@ -625,596 +611,501 @@
             margin-bottom: 20px;
         }
         
-        #go-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #FF0077;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 24px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
-        }
-        
-        #go-top:hover {
-            background: #333;
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .main-navigation {
-                flex-direction: column;
+            .col-six {
+                width: 100%;
             }
             
-            .intro-content h1 {
+            .nav-menu {
+                flex-direction: column;
+                background: #151515;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                padding: 20px;
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                color: #fff;
+                font-size: 24px;
+                cursor: pointer;
+            }
+            
+            .hero-content h1 {
                 font-size: 36px;
             }
             
-            .timeline-wrap::before {
-                left: 30px;
+            .timeline {
+                padding-left: 30px;
             }
             
-            .timeline-ico {
-                left: 30px;
-            }
-            
-            .timeline-header,
-            .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-block:nth-child(even) .timeline-header {
-                order: 0;
+            .timeline-icon {
+                left: -34px;
             }
         }
     </style>
 </head>
-<body id="top">
-    <!-- header -->
-    <header>   	
-        <div class="row">
-            <div class="top-bar">
-                <div class="text-logo">
-                    <a href="index.html">portfolio</a>
-                </div>		      
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">Saeed Khan</a>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-                <nav id="main-nav-wrap">
-                    <ul class="main-navigation">
-                        <li><a class="smoothscroll" href="#intro" title="">Home</a></li>
-                        <li><a class="smoothscroll" href="#about" title="">About</a></li>
-                        <li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
-                        <li><a class="smoothscroll" href="#projects" title="">Projects</a></li>
-                        <li><a class="smoothscroll" href="#services" title="">Services</a></li>					
-                        <li><a class="smoothscroll" href="#contact" title="">Contact</a></li>					
-                    </ul>
-                </nav>    		
-            </div> <!-- /top-bar --> 
-        </div> <!-- /row --> 		
-    </header> <!-- /header -->
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h5>Hello, World.</h5>
+                <h1>I'm Saeed Khan.</h1>
+                <p class="hero-position">
+                    <span>Certified Data Analyst</span>
+                    <span>MS Data Science</span>
+                </p>
+                <a href="#about" class="btn">More About Me</a>
+            </div>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/SaeedKhan-DS"><i class="fab fa-github"></i></a></li>
+            </ul>
+        </div>
+    </section>
 
-    <!-- intro section -->
-    <section id="intro">   
-        <div class="intro-overlay"></div>	
-
-        <div class="intro-content">
-            <div class="row">
-                <div class="col-twelve">
-                    <h5>Hello, World.</h5>
-                    <h1>I'm Saeed Khan.</h1>
-
-                    <p class="intro-position">
-                        <span>Certified Data Analyst</span>
-                        <span>MS Data Science</span>
-                    </p>
-
-                    <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-                </div>  
-            </div>   		 		
-        </div> <!-- /intro-content --> 
-
-        <ul class="intro-social">        
-            <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://github.com/SaeedKhan-DS"><i class="fab fa-github"></i></a></li>
-        </ul> <!-- /intro-social -->      	
-    </section> <!-- /intro -->
-
-    <!-- about section -->
-    <section id="about">  
-        <div class="row section-intro">
-            <div class="col-twelve">
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
                 <h5>About</h5>
                 <h1>Let me introduce myself.</h1>
-
-                <div class="intro-info">
-                    <!-- Placeholder for profile image -->
-                    <div style="width: 200px; height: 200px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                        <i class="fas fa-user" style="font-size: 80px; color: #999;"></i>
+            </div>
+            <div class="about-content">
+                <div class="col-six">
+                    <div class="profile-img">
+                        <div>
+                            <i class="fas fa-user"></i>
+                        </div>
                     </div>
-
-                    <p class="lead">As an MS Data Science student with a strong foundation in mathematics, I specialize in time series analysis and predictive modeling using Python. Currently, I am a data science intern where I apply advanced analytics and machine learning techniques to uncover meaningful insights from complex datasets. My curiosity drives me to explore innovative solutions and continually expand my technical toolkit. I am eager to contribute my analytical skills and passion for data to projects that make a difference.</p>
-                </div>   			
-            </div>   		
-        </div> <!-- /section-intro -->
-
-        <div class="row about-content">
-            <div class="col-six tab-full">
-                <h3>Profile</h3>
-                <p>Data Science graduate student and intern specializing in time series analysis, predictive modeling, and Python. Driven by curiosity and a passion for actionable insights, I use advanced analytics to make data meaningful.</p>
-
-                <ul class="info-list">
-                    <li>
-                        <strong>Fullname:</strong>
-                        <span>Saeed khan</span>
-                    </li>
-                    <li>
-                        <strong>Birth Date:</strong>
-                        <span>june 13, 2000</span>
-                    </li>
-                    <li>
-                        <strong>Job:</strong>
-                        <span>Freelancer, Data Science intern</span>
-                    </li>
-                    <li>
-                        <strong>Email:</strong>
-                        <span>saeedkhan2262@gmail.com</span>
-                    </li>
-                </ul> <!-- /info-list -->
-            </div>
-
-            <div class="col-six tab-full">
-                <h3>Skills</h3>
-                <ul class="skill-bars">
-                    <li>
-                        <div class="progress percent80"><span>80%</span></div>
-                        <strong>Programming</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent90"><span>90%</span></div>
-                        <strong>Data wrangling</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent85"><span>85%</span></div>
-                        <strong>Data visualization</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent80"><span>80%</span></div>
-                        <strong>Machine learning</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent80"><span>80%</span></div>
-                        <strong>Statistics and probability</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent75"><span>75%</span></div>
-                        <strong>My SQL</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent90"><span>90%</span></div>
-                        <strong>MS Excel</strong>
-                    </li>
-                    <li>
-                        <div class="progress percent80"><span>75%</span></div>
-                        <strong>Power Bi</strong>
-                    </li>
-                </ul> <!-- /skill-bars -->		
+                </div>
+                <div class="col-six">
+                    <div class="about-text">
+                        <p>As an MS Data Science student with a strong foundation in mathematics, I specialize in time series analysis and predictive modeling using Python. Currently, I am a data science intern where I apply advanced analytics and machine learning techniques to uncover meaningful insights from complex datasets.</p>
+                        <p>My curiosity drives me to explore innovative solutions and continually expand my technical toolkit. I am eager to contribute my analytical skills and passion for data to projects that make a difference.</p>
+                        
+                        <h3>Profile</h3>
+                        <p>Data Science graduate student and intern specializing in time series analysis, predictive modeling, and Python. Driven by curiosity and a passion for actionable insights, I use advanced analytics to make data meaningful.</p>
+                        
+                        <ul class="info-list">
+                            <li>
+                                <strong>Fullname:</strong>
+                                <span>Saeed Khan</span>
+                            </li>
+                            <li>
+                                <strong>Birth Date:</strong>
+                                <span>June 13, 2000</span>
+                            </li>
+                            <li>
+                                <strong>Job:</strong>
+                                <span>Freelancer, Data Science intern</span>
+                            </li>
+                            <li>
+                                <strong>Email:</strong>
+                                <span>saeedkhan2262@gmail.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="row button-section">
-            <div class="col-twelve">
-                <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-                <a href="#" title="Download CV" class="button button-primary">Download CV</a>
-            </div>   		
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h5>Skills</h5>
+                <h1>What I'm Good At.</h1>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-bars">
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>Data Wrangling</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent85"><span>85%</span></div>
+                            <strong>Data Visualization</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent80"><span>80%</span></div>
+                            <strong>Machine Learning</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent80"><span>80%</span></div>
+                            <strong>Programming</strong>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul class="skill-bars">
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>MS Excel</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent80"><span>80%</span></div>
+                            <strong>Python</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent75"><span>75%</span></div>
+                            <strong>MySQL</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent80"><span>80%</span></div>
+                            <strong>Power BI</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </section> <!-- /about -->
+    </section>
 
-    <!-- resume Section -->
-    <section id="resume" class="grey-section">
-        <div class="row section-intro">
-            <div class="col-twelve">
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-title">
                 <h5>Resume</h5>
                 <h1>More of my credentials.</h1>
-            </div>   		
-        </div> <!-- /section-intro--> 
-
-        <div class="row resume-timeline">
-            <div class="col-twelve resume-header">
+            </div>
+            <div class="resume-container">
                 <h2>Work Experience</h2>
-            </div> <!-- /resume-header -->
-
-            <div class="col-twelve">
-                <div class="timeline-wrap">
-                    <div class="timeline-block">
-                        <div class="timeline-ico">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
-
-                        <div class="timeline-header">
-                            <h3>Data Science intern</h3>
-                            <p>july 2025 - Present</p>
-                        </div>
-
                         <div class="timeline-content">
+                            <h3>Data Science Intern</h3>
+                            <p class="date">July 2025 - Present</p>
                             <h4>Evolvian Softwares(Pvt.)Ltd.</h4>
-                            <p>As a Data Science Intern at Evolvian softwares(pvt.)Ltd., I work on analyzing large datasets, building predictive models, and creating dashboards to support business decisions. Key projects include developing a AI Powered Weather forcasting web application with FastApi that uses time-series forcasting(ARIMA/LSTM/Prophet)</p>
+                            <p>As a Data Science Intern at Evolvian Softwares, I work on analyzing large datasets, building predictive models, and creating dashboards to support business decisions. Key projects include developing an AI Powered Weather forecasting web application with FastApi that uses time-series forecasting (ARIMA/LSTM/Prophet).</p>
                         </div>
-                    </div> <!-- /timeline-block -->
-
-                    <div class="timeline-block">
-                        <div class="timeline-ico">
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
-
-                        <div class="timeline-header">
-                            <h3>Data Analyst intern</h3>
-                            <p>march 2025 - may 2025</p>
-                        </div>
-
                         <div class="timeline-content">
+                            <h3>Data Analyst Intern</h3>
+                            <p class="date">March 2025 - May 2025</p>
                             <h4>Internee.pk</h4>
                             <p>As a Data Analyst Intern at Internee.pk, I spearheaded eight data-driven projects utilizing Python, Excel, Power BI, and SQL, including internship course analysis, fraud detection, and student sentiment analysis, where I performed exploratory data analysis (EDA), built machine learning models, and applied NLP techniques to extract actionable insights.</p>
                         </div>
-                    </div> <!-- /timeline-block -->
-                </div> <!-- /timeline-wrap -->
-            </div> <!-- /col-twelve -->
-        </div> <!-- /resume-timeline -->
-        
-        <div class="row resume-timeline">
-            <div class="col-twelve resume-header">
-                <h2>Education</h2>
-            </div> <!-- /resume-header -->
-
-            <div class="col-twelve">
-                <div class="timeline-wrap">
-                    <div class="timeline-block">
-                        <div class="timeline-ico">
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 50px;">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-
-                        <div class="timeline-header">
-                            <h3>MS Data Science</h3>
-                            <p>Feb 2025 - Present</p>
-                        </div>
-
                         <div class="timeline-content">
+                            <h3>MS Data Science</h3>
+                            <p class="date">Feb 2025 - Present</p>
                             <h4>Air University Islamabad</h4>
                             <p>Pursuing MS in Data Science with expertise in statistical modeling, machine learning, and big data analytics. Proficient in Python, R, SQL, TensorFlow, and Scikit-learn for predictive modeling, time series forecasting, and deep learning applications.</p>
                         </div>
-                    </div> <!-- /timeline-block -->
-
-                    <div class="timeline-block">
-                        <div class="timeline-ico">
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-
-                        <div class="timeline-header">
-                            <h3>BS Mathematics</h3>
-                            <p>May 2013 - June 2014</p>
-                        </div>
-
                         <div class="timeline-content">
-                            <h4>University of loralai</h4>
+                            <h3>BS Mathematics</h3>
+                            <p class="date">May 2013 - June 2014</p>
+                            <h4>University of Loralai</h4>
                             <p>I recently completed my BS in Mathematics, where I developed a rigorous analytical foundation and strong quantitative skills. Throughout my degree, I gained experience in problem-solving, statistical analysis, and mathematical modeling, preparing me to tackle complex data challenges.</p>
                         </div>
-                    </div> <!-- /timeline-block -->
-                </div> <!-- /timeline-wrap -->   			
-            </div> <!-- /col-twelve -->
-        </div> <!-- /resume-timeline -->
-    </section> <!-- /resume -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Portfolio Section -->
+    <!-- Projects Section -->
     <section id="projects">
-        <div class="row section-intro">
-            <div class="col-twelve">
-                <h5>My Projects</h5>
-                <h1 style="color: white;">Check Out Some of My Works.</h1>
-            </div>   		
-        </div> <!-- /section-intro--> 
+        <div class="container">
+            <div class="section-title">
+                <h5>Projects</h5>
+                <h1>Check Out Some of My Works.</h1>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/coffee_shop1.png" alt="Coffee Shop Sales Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>Coffee Shop Sales Analysis</h3>
+                        <div class="project-type">Data Analysis</div>
+                        <p>This project leveraged advanced data cleaning with Pandas and interactive visualizations with Plotly to extract actionable insights from sales data.</p>
+                        <a href="https://github.com/SaeedKhan-DS/Coffee_Shop_Sales_analysis" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/heart1.png" alt="Heart Disease Detection">
+                    </div>
+                    <div class="project-info">
+                        <h3>Heart Disease Detection</h3>
+                        <div class="project-type">Machine Learning</div>
+                        <p>Implemented multiple ML algorithms to detect heart disease with XGBoost achieving 87% accuracy and 89% sensitivity on a limited dataset.</p>
+                        <a href="https://github.com/SaeedKhan-DS/Data-Science-projects" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/ChatGPT%20Image%20Aug%205%2C%202025%2C%2005_22_19%20PM.png" alt="Netflix Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>Netflix Movies Analysis</h3>
+                        <div class="project-type">Data Analysis</div>
+                        <p>Analyzed Netflix content dataset to identify trends, most popular genres, and production patterns using Python's data analysis libraries.</p>
+                        <a href="https://github.com/SaeedKhan-DS/Netflix-movies-analysis-" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/retail_1.png" alt="Retail Sales Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>Retail Sales Analysis</h3>
+                        <div class="project-type">Data Analysis</div>
+                        <p>Conducted comprehensive analysis of online retail data to identify purchasing patterns, high-demand products, and data quality issues.</p>
+                        <a href="https://github.com/SaeedKhan-DS/Online-Retail-analysis" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="row portfolio-content">
-            <div class="col-twelve">
-                <!-- portfolio-wrapper -->
-                <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
-                    <!-- Project 1 -->
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <!-- Fixed URL using raw.githubusercontent.com -->
-                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/coffee_shop1.png" alt="Coffee Shop Sales Analysis">
-                            <a href="#modal-01" class="overlay">	                  	           
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Coffee shop sales analysis</h3>	     					    
-                                        <span class="folio-types">
-                                            Data analysis
-                                        </span>
-                                    </div>	                      	
-                                </div>                    
-                            </a>
-                        </div>	               
-                    </div> <!-- /folio-item -->
-
-                    <!-- Project 2 -->
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <!-- Fixed URL using raw.githubusercontent.com -->
-                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/heart1.png" alt="Heart Disease Detection">
-                            <a href="#modal-02" class="overlay">              		                  
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Heart disease detection using machine learning</h3>	     					    
-                                        <span class="folio-types">
-                                            Machine learning
-                                        </span>		     		
-                                    </div> 	                      	
-                                </div>                    
-                            </a>
-                        </div>
-                    </div> <!-- /folio-item -->
-
-                    <!-- Project 3 -->
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <!-- Fixed URL using raw.githubusercontent.com -->
-                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/ChatGPT%20Image%20Aug%205%2C%202025%2C%2005_22_19%20PM.png" alt="Netflix Analysis"> 
-                            <a href="#modal-04" class="overlay">                  	                 
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Netflix movies analysis</h3>	     					    
-                                        <span class="folio-types">
-                                            Data Analysis
-                                        </span>		     		
-                                    </div>  	                      	
-                                </div>                    
-                            </a>
-                        </div>
-                    </div> <!-- /folio-item -->     
-
-                    <!-- Project 4 -->
-                    <div class="bgrid folio-item">
-                        <div class="item-wrap">
-                            <!-- Fixed URL using raw.githubusercontent.com -->
-                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/retail_1.png" alt="Retail Sales Analysis">
-                            <a href="#modal-05" class="overlay">             		                  
-                                <div class="folio-item-table">
-                                    <div class="folio-item-cell">
-                                        <h3 class="folio-title">Retail sales analysis</h3>	     					    
-                                        <span class="folio-types">
-                                            Data analysis
-                                        </span>		     		
-                                    </div> 	                      	
-                                </div>                    
-                            </a>
-                        </div>
-                    </div> <!-- /folio-item -->
-                </div> <!-- /portfolio-wrapper --> 
-            </div>  <!-- /twelve -->   
-        </div> <!-- /portfolio-content --> 
-    </section> <!-- /portfolio -->
-
-    <!-- services Section -->
+    <!-- Services Section -->
     <section id="services">
-        <div class="row section-intro">
-            <div class="col-twelve">
+        <div class="container">
+            <div class="section-title">
                 <h5>Services</h5>
                 <h1>What Can I Do For You?</h1>
-            </div>   		
-        </div> <!-- /section-intro -->
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Time Series Analysis & Forecasting</h3>
+                    <p>I implement state-of-the-art forecasting models (ARIMA, Prophet, LSTM) to analyze temporal patterns in your business data.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics Solutions</h3>
+                    <p>I build custom machine learning pipelines that transform your historical data into actionable future insights.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Behavior Intelligence</h3>
+                    <p>Using RFM analysis, clustering, and pattern mining to decode customer journey and identify high-value segments.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dashboard"></i>
+                    </div>
+                    <h3>Business Intelligence & Dashboards</h3>
+                    <p>I build dynamic visualization platforms that transform your raw data into actionable insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="row services-content">
-            <div class="services-list">
-                <div class="service">	
-                    <span class="icon"><i class="fas fa-chart-line"></i></span>            
-                    <div class="service-content">	
-                        <h3>Time Series Analysis & Forecasting</h3>
-                        <p class="desc">I implement state-of-the-art forecasting models (ARIMA, Prophet, LSTM) to analyze temporal patterns in your business data. My approach captures seasonality, trends, and anomalies to generate accurate demand predictions.</p>
-                    </div> 
-                </div> <!-- /service -->
-
-                <div class="service">	
-                    <span class="icon"><i class="fas fa-brain"></i></span>                          
-                    <div class="service-content">	
-                        <h3>Predictive Analytics Solutions</h3>  
-                        <p class="desc">I build custom machine learning pipelines that transform your historical data into actionable future insights. After thorough exploratory analysis, I select and optimize the most suitable algorithms.</p>
-                    </div>	                          
-                </div> <!-- /service -->
-
-                <div class="service">
-                    <span class="icon"><i class="fas fa-users"></i></span>		            
-                    <div class="service-content">
-                        <h3>Customer Behavior Intelligence</h3>
-                        <p class="desc">Using RFM analysis, clustering (K-Means, DBSCAN), and sequential pattern mining, I decode your customer journey. My models identify high-value segments, predict churn risks, and uncover hidden behavioral patterns.</p> 
-                    </div> 	            	               
-                </div> <!-- /service -->
-
-                <div class="service">
-                    <span class="icon"><i class="fas fa-dashboard"></i></span>	              
-                    <div class="service-content">
-                        <h3>Business Intelligence & Dashboards</h3>
-                        <p class="desc">I build dynamic visualization platforms that transform your raw data into actionable insights. My dashboards provide real-time monitoring of key performance indicators with intuitive interfaces.</p> 
-                    </div>                
-                </div> <!-- /service -->
-
-                <div class="service">
-                    <span class="icon"><i class="fas fa-database"></i></span>	   	           
-                    <div class="service-content">
-                        <h3>Data Quality Assessment & Improvement</h3>
-                        <p class="desc">I conduct comprehensive audits of your data infrastructure to identify integrity issues and improvement opportunities. My systematic approach ensures your datasets are accurate, consistent, and ready for advanced analytics.</p> 
-                    </div>	               
-                </div> <!-- /service -->
-            </div> <!-- /services-list -->
-        </div> <!-- /services-content -->
-    </section> <!-- /services -->
-
-    <!-- stats Section -->
-    <section id="stats" class="count-up">
-        <div class="row">
-            <div class="col-twelve">
-                <div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-                    <div class="bgrid stat">
-                        <div class="icon-part">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3 class="stat-count">7</h3>
-                        <h5 class="stat-title">Machine learning Models deployed</h5>
-                    </div> <!-- /stat -->					
-
-                    <div class="bgrid stat">
-                        <div class="icon-part">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="stat-count">4</h3>
-                        <h5 class="stat-title">Business problem solved</h5>
-                    </div> <!-- /stat -->
-
-                    <div class="bgrid stat">
-                        <div class="icon-part">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <h3 class="stat-count">4</h3>
-                        <h5 class="stat-title">Awards Received</h5>
-                    </div> <!-- /stat -->									
-
-                    <div class="bgrid stat">
-                        <div class="icon-part">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="stat-count">3</h3>
-                        <h5 class="stat-title">Crazy Ideas</h5>
-                    </div> <!-- /stat -->
-
-                    <div class="bgrid stat">
-                        <div class="icon-part">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h3 class="stat-count">120</h3>
-                        <h5 class="stat-title">Hours of Data Cleaning</h5>
-                    </div> <!-- /stat -->
-                </div> <!-- /stats-list -->
-            </div> <!-- /twelve -->
-        </div> <!-- /row -->
-    </section> <!-- /stats -->
+    <!-- Stats Section -->
+    <section id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-count">7</div>
+                    <h5>Machine Learning Models Deployed</h5>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-count">4</div>
+                    <h5>Business Problems Solved</h5>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-count">4</div>
+                    <h5>Awards Received</h5>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-count">120</div>
+                    <h5>Hours of Data Cleaning</h5>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <div class="row section-intro">
-            <div class="col-twelve">
+        <div class="container">
+            <div class="section-title">
                 <h5>Contact</h5>
                 <h1>I'd Love To Hear From You.</h1>
-                <p class="lead">Interested in collaborating, discussing data science, or just want to say hello? Reach out—</p>
-            </div> 
-        </div> <!-- /section-intro -->
-
-        <div class="row contact-form">
-            <div class="col-twelve">
-                <!-- form -->
-                <form name="contactForm" id="contactForm" method="post" action="">
-                    <fieldset>
-                        <div class="form-field">
-                            <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
-                        </div>
-                        <div class="form-field">
-                            <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
-                        </div>
-                        <div class="form-field">
-                            <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
-                        </div>                       
-                        <div class="form-field">
-                            <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
-                        </div>                      
-                        <div class="form-field">
-                            <button class="submitform">Submit</button>
-                        </div>
-                    </fieldset>
-                </form> <!-- Form End -->
-            </div> <!-- /col-twelve -->
-        </div> <!-- /contact-form -->
-
-        <div class="row contact-info">
-            <div class="col-four tab-full">
-                <div class="icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h5>Where to find me</h5>
-                <p>
-                    House No 22 G9/4<br>
-                    Islamabad, Pakistan
-                </p>
             </div>
-
-            <div class="col-four tab-full collapse">
-                <div class="icon">
-                    <i class="fas fa-envelope"></i>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
-                <h5>Email Me At</h5>
-                <p>saeedkhan2262@gmail.com<br>
-                    saeedkhanparkani@gmail.com			     
-                </p>
-            </div>
-
-            <div class="col-four tab-full">
-                <div class="icon">
-                    <i class="fas fa-phone"></i>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Location</h4>
+                        <p>House No 22 G9/4, Islamabad, Pakistan</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>saeedkhan2262@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>0334-8936546</p>
+                    </div>
                 </div>
-                <h5>Call Me At</h5>
-                <p>
-                    Mobile: 0334-8936546
-                </p>
             </div>
-        </div> <!-- /contact-info -->
-    </section> <!-- /contact -->
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="row">
-            <div class="col-six tab-full pull-right social">
-                <ul class="footer-social">        
-                    <li><a href="https://github.com/SaeedKhan-DS"><i class="fab fa-github"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fab fa-linkedin"></i></a></li>
-                </ul> 
+        <div class="container">
+            <ul class="footer-social">
+                <li><a href="https://github.com/SaeedKhan-DS"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            
+            <div class="copyright">
+                <span>© Saeed Khan 2025</span>
             </div>
-
-            <div class="col-six tab-full">
-                <div class="copyright">
-                    <span>© Saeed khan 2025</span> 
-                    <span>Design by <a href="http://www.styleshout.com/">Saeed</a></span>	         	
-                </div>		                  
-            </div>
-
-            <div id="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="fas fa-arrow-up"></i></a>
-            </div>
-        </div> <!-- /row -->     	
-    </footer>  
+        </div>
+    </footer>
 
     <script>
+        // Simple form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-
-        // Simple form validation
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
-            });
-        }
     </script>
 </body>
 </html>
