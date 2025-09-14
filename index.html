@@ -1,672 +1,1058 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
-
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
-	<title>Saeed khan's portfolio</title>
-	<meta name="description" content="">  
-	<meta name="author" content="">
-
-   <!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
- 	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">  
-   <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">     
-
-   <!-- script
-   ================================================== -->   
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
-
-   <!-- favicons
-	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saeed Khan's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .col-twelve {
+            width: 100%;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: #151515;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .text-logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .main-navigation {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-navigation li {
+            margin: 0 15px;
+        }
+        
+        .main-navigation a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        
+        .main-navigation a:hover {
+            color: #FF0077;
+        }
+        
+        /* Intro Section */
+        #intro {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #333;
+            color: #fff;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .intro-content h5 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #FF0077;
+        }
+        
+        .intro-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .intro-position {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #FF0077;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .button:hover {
+            background: #fff;
+            color: #FF0077;
+        }
+        
+        .intro-social {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 40px;
+        }
+        
+        .intro-social li {
+            margin: 0 15px;
+        }
+        
+        .intro-social a {
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        
+        .intro-social a:hover {
+            color: #FF0077;
+        }
+        
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background: #fff;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-intro h5 {
+            color: #FF0077;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .section-intro h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .intro-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .intro-info img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 5px solid #f0f0f0;
+        }
+        
+        .intro-info .lead {
+            max-width: 800px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .tab-full {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .info-list li {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .info-list strong {
+            min-width: 120px;
+            margin-right: 15px;
+        }
+        
+        .skill-bars {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .skill-bars li {
+            height: 6px;
+            background: #e0e0e0;
+            width: 100%;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #FF0077;
+        }
+        
+        .progress span {
+            position: absolute;
+            right: -25px;
+            top: -30px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .skill-bars strong {
+            position: absolute;
+            left: 0;
+            top: -30px;
+            font-weight: 600;
+        }
+        
+        .button-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .button-primary {
+            background: #333;
+        }
+        
+        .button-primary:hover {
+            background: #FF0077;
+            color: #fff;
+        }
+        
+        /* Resume Section */
+        #resume {
+            background: #f5f5f5;
+            padding: 100px 0;
+        }
+        
+        .resume-timeline {
+            margin-bottom: 60px;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .resume-header h2 {
+            font-size: 30px;
+            color: #333;
+        }
+        
+        .timeline-wrap {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-wrap::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #FF0077;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-block {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-ico {
+            width: 50px;
+            height: 50px;
+            background: #FF0077;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-header {
+            width: 45%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-block:nth-child(odd) .timeline-header {
+            margin-right: auto;
+        }
+        
+        .timeline-block:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-block:nth-child(even) .timeline-header {
+            margin-left: auto;
+            order: 2;
+        }
+        
+        .timeline-block:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+        
+        /* Portfolio Section */
+        #projects {
+            padding: 100px 0;
+            background: #151515;
+            color: #fff;
+        }
+        
+        #projects .section-intro h1 {
+            color: #fff;
+        }
+        
+        .portfolio-content {
+            margin-bottom: 50px;
+        }
+        
+        /* Portfolio Grid */
+        .block-1-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .block-1-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Folio Item */
+        .folio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .folio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .item-wrap {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .item-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .folio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .folio-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        .folio-item-table {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .folio-title {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .folio-types {
+            color: #FF0077;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Services Section */
+        #services {
+            padding: 100px 0;
+            background: #fff;
+            position: relative;
+        }
+        
+        .services-content {
+            margin-top: 50px;
+        }
+        
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .service {
+            width: 300px;
+            padding: 30px;
+            margin: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service .icon {
+            font-size: 48px;
+            color: #FF0077;
+            margin-bottom: 20px;
+        }
+        
+        .service h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* Stats Section */
+        #stats {
+            padding: 80px 0;
+            background: #FF0077;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .stats-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .stat {
+            width: 200px;
+            padding: 20px;
+            margin: 15px;
+        }
+        
+        .stat .icon-part {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-count {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background: #f5f5f5;
+        }
+        
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-field {
+            margin-bottom: 20px;
+        }
+        
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-field textarea {
+            min-height: 150px;
+        }
+        
+        .submitform {
+            background: #FF0077;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .submitform:hover {
+            background: #333;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .tab-full {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .tab-full .icon {
+            font-size: 36px;
+            color: #FF0077;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #151515;
+            color: #fff;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social li {
+            margin: 0 15px;
+        }
+        
+        .footer-social a {
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: #FF0077;
+        }
+        
+        .copyright {
+            margin-bottom: 20px;
+        }
+        
+        #go-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #FF0077;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+        
+        #go-top:hover {
+            background: #333;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-navigation {
+                flex-direction: column;
+            }
+            
+            .intro-content h1 {
+                font-size: 36px;
+            }
+            
+            .timeline-wrap::before {
+                left: 30px;
+            }
+            
+            .timeline-ico {
+                left: 30px;
+            }
+            
+            .timeline-header,
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-block:nth-child(even) .timeline-header {
+                order: 0;
+            }
+        }
+    </style>
 </head>
-
 <body id="top">
-
-	<!-- header 
-   ================================================== -->
-   <header>   	
-   	<div class="row">
-
-   		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-	   		<div class="text-logo">
-		         <a href="index.html">portfolio</a>
-		      </div>		      
-
-		   	<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
-						<li><a class="smoothscroll"  href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll"  href="#projects" title="">Projets</a></li>
-						<li><a class="smoothscroll"  href="#services" title="">Services</a></li>					
-						<li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>					
-					</ul>
-				</nav>    		
-   		</div> <!-- /top-bar --> 
-   		
-   	</div> <!-- /row --> 		
-   </header> <!-- /header -->
-
-	<!-- intro section
-   ================================================== -->
-   <section id="intro">   
-
-   	<div class="intro-overlay"></div>	
-
-   	<div class="intro-content">
-   		<div class="row">
-
-   			<div class="col-twelve">
-
-	   			<h5>Hello, World.</h5>
-	   			<h1>I'm Saeed Khan.</h1>
-
-	   			<p class="intro-position">
-	   				<span>Certified Data Analyst</span>
-	   				<span>MS Data Science</span>
-	 
-	   			</p>
-
-	   			<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-
-	   		</div>  
-   			
-   		</div>   		 		
-   	</div> <!-- /intro-content --> 
-
-   	<ul class="intro-social">        
-         <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fa fa-linkedin"></i></a></li>
-         <li><a href="https://github.com/SaeedKhan-DS"><i class="fa fa-github"></i></a></li>
- 
-      </ul> <!-- /intro-social -->      	
-
-   </section> <!-- /intro -->
-
-
-   <!-- about section
-   ================================================== -->
-   <section id="about">  
-
-   	<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>About</h5>
-   			<h1>Let me introduce myself.</h1>
-
-   			<div class="intro-info">
-
-   				<img src="images/profile.png" alt="Profile Picture">
-
-   				<p class="lead">As an MS Data Science student with a strong foundation in mathematics, I specialize in time series analysis and predictive modeling using Python. Currently, I am a data science intern where I apply advanced analytics and machine learning techniques to uncover meaningful insights from complex datasets. My curiosity drives me to explore innovative solutions and continually expand my technical toolkit. I am eager to contribute my analytical skills and passion for data to projects that make a difference.</p>
-   			</div>   			
-
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row about-content">
-
-   		<div class="col-six tab-full">
-
-   			<h3>Profile</h3>
-   			<p>Data Science graduate student and intern specializing in time series analysis, predictive modeling, and Python. Driven by curiosity and a passion for actionable insights, I use advanced analytics to make data meaningful.</p>
-
-   			<ul class="info-list">
-   				<li>
-   					<strong>Fullname:</strong>
-   					<span>Saeed khan</span>
-   				</li>
-   				<li>
-   					<strong>Birth Date:</strong>
-   					<span>june 13, 2000</span>
-   				</li>
-   				<li>
-   					<strong>Job:</strong>
-   					<span>Freelancer,Data Science intern</span>
-   				</li>
-   				<li>
-   					<strong>Email:</strong>
-   					<span>saeedkhan2262@gmail.com</span>
-   				</li>
-
-   			</ul> <!-- /info-list -->
-
-   		</div>
-
-   		<div class="col-six tab-full">
-
-   			<h3>Skills</h3>
-   		
-
-				<ul class="skill-bars">
-					<li>
-				   	<div class="progress percent80"><span>80</span></div>
-				   	<strong>Programming</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent90"><span>90%</span></div>
-				   	<strong>Data wrangling</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent85"><span>85%</span></div>
-				   	<strong>Data visualization</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent80"><span>80</span></div>
-				   	<strong>Machine learning</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent80"><span>80</span></div>
-				   	<strong>Statistics and probability</strong>
-				   </li>
-				   <li>
-
-				   	<div class="progress percent75"><span>75%</span></div>
-				   	<strong>My SQL</strong>
-				   </li>
-				   <li>
-
-				   	<div class="progress percent90"><span>90</span></div>
-				   	<strong>MS Excel</strong>
-				   </li>
-				   <li>
-
-				   	<div class="progress percent80"><span>75%</span></div>
-				   	<strong>Power Bi</strong>
-				   </li>
-      
-				</ul> <!-- /skill-bars -->		
-
-   		</div>
-
-   	</div>
-
-   	<div class="row button-section">
-    <div class="col-twelve">
-        <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-        <a href="https://github.com/SaeedKhan-DS/DataScientist/blob/main/Saeed_khan_CV.pdf" title="Download CV" class="button button-primary" download="Saeed Khan-CV.pdf">Download CV</a>
-    </div>   		
-</div>
-
-   </section> <!-- /process-->    
-
-
-   <!-- resume Section
-   ================================================== -->
-	<section id="resume" class="grey-section">
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Resume</h5>
-   			<h1>More of my credentials.</h1>
-
-
-   		</div>   		
-   	</div> <!-- /section-intro--> 
-
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Work Experience</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Data Science intern</h3>
-	   					<p>july 2025 - Present</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Evolvian Softwares(Pvt.)Ltd.</h4>
-	   					<p>
-	   						As a Data Science Intern at Evolvian softwares(pvt.)Ltd., I work on analyzing large datasets, building predictive models, and creating dashboards to support business decisions. Key projects include developing a AI Powered Weather forcasting web application with FastApi that uses time-series forcasting(ARIMA/LSTM/Prophet)
-	   					</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Data Analyst intern</h3>
-	   					<p>march 2025 - may 2025</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Internee.pk</h4>
-	   					<p>
-	   						As a Data Analyst Intern at Internee.pk, I spearheaded eight data-driven projects utilizing Python, Excel, Power BI, and SQL, including internship course analysis, fraud detection, and student sentiment analysis, where I performed exploratory data analysis (EDA), built machine learning models, and applied NLP techniques to extract actionable insights, optimize processes, and enhance decision-making—contributing to a 30% reduction in fraudulent enrollments and improved program satisfaction through data visualization, predictive modeling, and structured reporting.
-	   					</p>
-	   				</div>
-
-	   			
-
-   		</div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /resume-timeline -->
-   	
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Education</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>MS Data Science</h3>
-	   					<p>Feb 2025 - Present</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Air University Islamabad</h4>
-	   					<p>
-	   						Pursuing MS in Data Science with expertise in statistical modeling, machine learning, and big data analytics. Proficient in Python, R, SQL, TensorFlow, and Scikit-learn for predictive modeling, time series forecasting, and deep learning applications.	   					</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>BS Mathematics</h3>
-	   					<p>May 2013 - June 2014</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>University of loralai</h4>
-	   					<p>I recently completed my BS in Mathematics, where I developed a rigorous analytical foundation and strong quantitative skills. Throughout my degree, I gained experience in problem-solving, statistical analysis, and mathematical modeling, preparing me to tackle complex data challenges and contribute valuable insights in diverse fields.my final year project was "comparative analysis of Newton-raphson method and Secant method using non linear equation in MATLAB</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-   			</div> <!-- /timeline-wrap -->   			
-
-   		</div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /resume-timeline -->
-		
-	</section> <!-- /features -->
-
-
-	<!-- Portfolio Section
-   ================================================== -->
-	<section id="projects">
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>My Projects</h5>
-   			<h1 style="color: white;">Check Out Some of My Works.</h1>
-
-
-   		</div>   		
-   	</div> <!-- /section-intro--> 
-
-   	<div class="row portfolio-content">
-
-   		<div class="col-twelve">
-
-   			<!-- portfolio-wrapper -->
-	         <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
-
-	         	<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/coffee_shop1.png" alt="Liberty">
-	                  <a href="#modal-01" class="overlay">	                  	           
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-		     					       <h3 class="folio-title">Coffee shop sales analysis</h3>	     					    
-		     					    	 <span class="folio-types">
-		     					       	  Data anlaysis
-		     					       </span>
-		     					   </div>	                      	
-	                     </div>                    
-	                  </a>
-	               </div>	               
-	        		</div> <!-- /folio-item -->
-
-	        		<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="https://github.com/SaeedKhan-DS/DataScientist/blob/main/images/heart1.png" alt="Shutterbug">
-	               	<a href="#modal-02" class="overlay">              		                  
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title" style="font-size: 16px;">Heart disease detection using supervised machine learning algorithems</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Machine learning
-		     					      </span>		     		
-		     					   </div> 	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->
-
-
-	            <div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="https://github.com/SaeedKhan-DS/DataScientist/blob/main/images/ChatGPT%20Image%20Aug%205%2C%202025%2C%2005_22_19%20PM.png" alt="Netflix"> 
-	                  <a href="#modal-04" class="overlay">                  	                 
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Netflix movies analysis</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Data Analysis
-		     					      </span>		     		
-		     					   </div>  	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->     
-
-	        		<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="https://github.com/SaeedKhan-DS/DataScientist/blob/main/images/retail_1.png" alt="Lighthouse">
-	                  <a href="#modal-05" class="overlay">             		                  
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Retail sales analysis</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Data analysis
-		     					      </span>		     		
-		     					   </div> 	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->
-
-	              
-
-	            <!-- modal popups - begin
-	            ============================================================= -->
-	            <div id="modal-01" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/m-liberty.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Coffee shope sales analysis</h4>		      
-					      <p>This project leveraged advanced data cleaning with Pandas and interactive visualizations with Plotly to extract actionable insights from sales data. Key analyses included identifying best-selling products (by quantity and revenue), top-performing locations, and peak revenue-generating times (hours, days, and months). Additionally, sentiment analysis assessed customer feedback to gauge satisfaction trends. The findings enabled optimized inventory management, targeted marketing strategies, and enhanced customer experiences—ultimately driving revenue growth. Using Python, Plotly, this analysis transformed raw data into strategic business intelligence, paving the way for data-driven decision-making and future predictive modeling.</p>
-
-					      <div class="categories">Data Analysis</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://github.com/SaeedKhan-DS/Coffee_Shop_Sales_analysis">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-01 -->
-
-				   <div id="modal-02" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="/images/heart1.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Heart disease detection using supervised machine learning</h4>		      
-					      <p>In this project, we explored the best-performing machine learning algorithm for a small, limited dataset of 300 patients. Multiple models—including KNN, SVM, Decision Trees, Logistic Regression, Random Forest, and XGBoost—were implemented and evaluated. While all algorithms demonstrated strong performance, XGBoost outperformed the rest, achieving an impressive 87% accuracy and 89% sensitivity.<br>
-
-The results highlight XGBoost's robustness and efficiency in handling limited medical data, making it an excellent choice for predictive modeling where high sensitivity and accuracy are critical. This success underscores the potential of ensemble methods in small-scale, high-stakes datasets.</p>
-
-					      <div class="categories">Machine learning</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://github.com/SaeedKhan-DS/Data-Science-projects">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-02 -->
-
-				   <div id="modal-04" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/m-beetle.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Netflix Movies analysis</h4>		      
-					      <p><strong>In this project we fetch the following insights</strong><br><br>
-            • <b>Most Frequent Genre:</b> Drama (14% frequency)<br>
-            • <b>Highest Votes Genre:</b> Popular films led by Drama (20.45%)<br>
-            • <b>Top Movie:</b> "Spider-Man: No Way Home" (Action/Adventure/Sci-Fi)<br>
-            • <b>Lowest Popularity:</b> "The United States vs. Billie Holiday"<br>
-            • <b>Peak Production Year:</b> 2020 had most releases<br><br>
-            in this project i used python-advance libraries like pandas,numpy, matplotlib for advance analysis and visualization
-            </p>
-
-					      <div class="categories">Data Analysis</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://github.com/SaeedKhan-DS/Netflix-movies-analysis-">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-04 -->
-
-				   <div id="modal-05" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/m-lighthouse.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Online Retail Analysis </h4>		      
-					      <p> <strong>Key Processes:</strong><br>
-            • 🛠️ <b>Missing Data Handling:</b> Filled product descriptions using most frequent values<br>
-            • ✨ <b>Data Cleaning:</b> Addressed null values and standardized data types<br>
-            • 🛒 <b>Purchase Analysis:</b> Identified top-selling products and customer patterns<br><br>
-            
-            <strong>Key Insights:</strong><br>
-            • 📌 Discovered high-demand products for inventory optimization<br>
-            • 📌 Identified data quality issues needing process improvements<br><br>
-            
-            <strong>Business Impact:</strong><br>
-            • Enables better stock management for popular items<br>
-            • Highlights need for improved data collection processes</p>
-
-					      <div class="categories">Data Analysis | Buisness intelligence</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://github.com/SaeedKhan-DS/Online-Retail-analysis">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-05 -->
-
-
-				   <!-- modal popups - end
-	            ============================================================= -->
-
-	         </div> <!-- /portfolio-wrapper --> 
-
-   		</div>  <!-- /twelve -->   
-
-   	</div> <!-- /portfolio-content --> 
-		
-	</section> <!-- /portfolio --> 
-
-
-	<!-- CTA Section
-   ================================================== -->
-	<!--<section id="cta" class="grey-section">
-
-   	<div class="row cta-content">
-
-   		<div class="col-twelve section-ads">  
-
-	     		<h2 class="h01"><a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Styleshout Recommends Dreamhost.</a></h2>
-
-		      <p class="lead">
-		      Looking for an awesome and reliable webhosting? Try <a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT"><span>DreamHost</span></a>.
-				Get <span>$50 off</span> when you sign up with the promocode <span>styleshout</span>. 
-				 Simply type	the promocode in the box labeled “Promo Code” when placing your order. 
-				</p>
-
-				<div class="action">
-			      <a class="button button-primary large" href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Sign Up Now</a>
-		      </div>		     	
-
-   		</div>
-
-   	</div> /cta-content 
-
-   </section>  --> 
-
-	
-	<!-- services Section
-   ================================================== -->
-	<section id="services">
-
-		<div class="overlay"></div>
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Services</h5>
-   			<h1>What Can I Do For You?</h1>
-
-   			
-
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row services-content">
-
-   		<div id="owl-slider" class="owl-carousel services-list">
-
-	      	<div class="service">	
-
-	      		<span class="icon"><i class="icon-earth"></i></span>            
-
-	            <div class="service-content">	
-
-	            	 <h3>Time Series Analysis & Forecasting</h3>
-
-		            <p class="desc">I implement state-of-the-art forecasting models (ARIMA, Prophet, LSTM) to analyze temporal patterns in your business data. My approach captures seasonality, trends, and anomalies to generate accurate demand predictions, inventory projections, and performance forecasts - typically delivering 85-92% prediction accuracy.
-	         		</p>
-	         		
-	         	</div> 	         	 
-
-				</div> <!-- /service -->
-
-				<div class="service">	
-
-					<span class="icon"><i class="icon-window"></i></span>                          
-
-	            <div class="service-content">	
-
-	            	<h3>Predictive Analytics Solutions</h3>  
-
-		            <p class="desc">I build custom machine learning pipelines that transform your historical data into actionable future insights. After thorough exploratory analysis, I select and optimize the most suitable algorithms (XGBoost, Random Forest, Neural Nets) to predict key business outcomes with measurable precision.
-	         		</p>
-
-	            </div>	                          
-
-			   </div> <!-- /service -->
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-paint-brush"></i></span>		            
-
-	            <div class="service-content">
-
-	            	<h3>Customer Behavior Intelligence</h3>
-
-		            <p class="desc">Using RFM analysis, clustering (K-Means, DBSCAN), and sequential pattern mining, I decode your customer journey. My models identify high-value segments, predict churn risks, and uncover hidden behavioral patterns to boost retention and LTV.
-	        			</p> 
-
-	            </div> 	            	               
-
-			   </div> <!-- /service -->
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-toggles"></i></span>	              
-
-	            <div class="service-content">
-
-	            	<h3>Business Intelligence & Dashboards</h3>
-
-		            <p class="desc">I build dynamic visualization platforms that transform your raw data into actionable insights. My dashboards provide real-time monitoring of key performance indicators with intuitive interfaces designed for decision-makers at all levels.
-	         		</p> 
-	         		
-	            </div>                
-
-				</div> <!-- /service -->
-
-			   
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="fas fa-table"></i></span>	   	           
-
-	            <div class="service-content">
-
-	            	 <h3>Data Quality Assessment & Improvement</h3>
-
-		            <p class="desc">I conduct comprehensive audits of your data infrastructure to identify integrity issues and improvement opportunities. My systematic approach ensures your datasets are accurate, consistent, and ready for advanced analytics applications
-	        			</p> 
-	        			
-	            </div>	               
-
-			   </div> <!-- /service -->
-
-	      </div> <!-- /services-list -->
-   		
-   	</div> <!-- /services-content -->
-		
-	</section> <!-- /services -->	
+    <!-- header -->
+    <header>   	
+        <div class="row">
+            <div class="top-bar">
+                <div class="text-logo">
+                    <a href="index.html">portfolio</a>
+                </div>		      
+
+                <nav id="main-nav-wrap">
+                    <ul class="main-navigation">
+                        <li><a class="smoothscroll" href="#intro" title="">Home</a></li>
+                        <li><a class="smoothscroll" href="#about" title="">About</a></li>
+                        <li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
+                        <li><a class="smoothscroll" href="#projects" title="">Projects</a></li>
+                        <li><a class="smoothscroll" href="#services" title="">Services</a></li>					
+                        <li><a class="smoothscroll" href="#contact" title="">Contact</a></li>					
+                    </ul>
+                </nav>    		
+            </div> <!-- /top-bar --> 
+        </div> <!-- /row --> 		
+    </header> <!-- /header -->
+
+    <!-- intro section -->
+    <section id="intro">   
+        <div class="intro-overlay"></div>	
+
+        <div class="intro-content">
+            <div class="row">
+                <div class="col-twelve">
+                    <h5>Hello, World.</h5>
+                    <h1>I'm Saeed Khan.</h1>
+
+                    <p class="intro-position">
+                        <span>Certified Data Analyst</span>
+                        <span>MS Data Science</span>
+                    </p>
+
+                    <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
+                </div>  
+            </div>   		 		
+        </div> <!-- /intro-content --> 
+
+        <ul class="intro-social">        
+            <li><a href="https://www.linkedin.com/in/saeed-khan-a735b131a/"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/SaeedKhan-DS"><i class="fab fa-github"></i></a></li>
+        </ul> <!-- /intro-social -->      	
+    </section> <!-- /intro -->
+
+    <!-- about section -->
+    <section id="about">  
+        <div class="row section-intro">
+            <div class="col-twelve">
+                <h5>About</h5>
+                <h1>Let me introduce myself.</h1>
+
+                <div class="intro-info">
+                    <!-- Placeholder for profile image -->
+                    <div style="width: 200px; height: 200px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                        <i class="fas fa-user" style="font-size: 80px; color: #999;"></i>
+                    </div>
+
+                    <p class="lead">As an MS Data Science student with a strong foundation in mathematics, I specialize in time series analysis and predictive modeling using Python. Currently, I am a data science intern where I apply advanced analytics and machine learning techniques to uncover meaningful insights from complex datasets. My curiosity drives me to explore innovative solutions and continually expand my technical toolkit. I am eager to contribute my analytical skills and passion for data to projects that make a difference.</p>
+                </div>   			
+            </div>   		
+        </div> <!-- /section-intro -->
+
+        <div class="row about-content">
+            <div class="col-six tab-full">
+                <h3>Profile</h3>
+                <p>Data Science graduate student and intern specializing in time series analysis, predictive modeling, and Python. Driven by curiosity and a passion for actionable insights, I use advanced analytics to make data meaningful.</p>
+
+                <ul class="info-list">
+                    <li>
+                        <strong>Fullname:</strong>
+                        <span>Saeed khan</span>
+                    </li>
+                    <li>
+                        <strong>Birth Date:</strong>
+                        <span>june 13, 2000</span>
+                    </li>
+                    <li>
+                        <strong>Job:</strong>
+                        <span>Freelancer, Data Science intern</span>
+                    </li>
+                    <li>
+                        <strong>Email:</strong>
+                        <span>saeedkhan2262@gmail.com</span>
+                    </li>
+                </ul> <!-- /info-list -->
+            </div>
+
+            <div class="col-six tab-full">
+                <h3>Skills</h3>
+                <ul class="skill-bars">
+                    <li>
+                        <div class="progress percent80"><span>80%</span></div>
+                        <strong>Programming</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent90"><span>90%</span></div>
+                        <strong>Data wrangling</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent85"><span>85%</span></div>
+                        <strong>Data visualization</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent80"><span>80%</span></div>
+                        <strong>Machine learning</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent80"><span>80%</span></div>
+                        <strong>Statistics and probability</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent75"><span>75%</span></div>
+                        <strong>My SQL</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent90"><span>90%</span></div>
+                        <strong>MS Excel</strong>
+                    </li>
+                    <li>
+                        <div class="progress percent80"><span>75%</span></div>
+                        <strong>Power Bi</strong>
+                    </li>
+                </ul> <!-- /skill-bars -->		
+            </div>
+        </div>
+
+        <div class="row button-section">
+            <div class="col-twelve">
+                <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
+                <a href="#" title="Download CV" class="button button-primary">Download CV</a>
+            </div>   		
+        </div>
+    </section> <!-- /about -->
+
+    <!-- resume Section -->
+    <section id="resume" class="grey-section">
+        <div class="row section-intro">
+            <div class="col-twelve">
+                <h5>Resume</h5>
+                <h1>More of my credentials.</h1>
+            </div>   		
+        </div> <!-- /section-intro--> 
+
+        <div class="row resume-timeline">
+            <div class="col-twelve resume-header">
+                <h2>Work Experience</h2>
+            </div> <!-- /resume-header -->
+
+            <div class="col-twelve">
+                <div class="timeline-wrap">
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+
+                        <div class="timeline-header">
+                            <h3>Data Science intern</h3>
+                            <p>july 2025 - Present</p>
+                        </div>
+
+                        <div class="timeline-content">
+                            <h4>Evolvian Softwares(Pvt.)Ltd.</h4>
+                            <p>As a Data Science Intern at Evolvian softwares(pvt.)Ltd., I work on analyzing large datasets, building predictive models, and creating dashboards to support business decisions. Key projects include developing a AI Powered Weather forcasting web application with FastApi that uses time-series forcasting(ARIMA/LSTM/Prophet)</p>
+                        </div>
+                    </div> <!-- /timeline-block -->
+
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+
+                        <div class="timeline-header">
+                            <h3>Data Analyst intern</h3>
+                            <p>march 2025 - may 2025</p>
+                        </div>
+
+                        <div class="timeline-content">
+                            <h4>Internee.pk</h4>
+                            <p>As a Data Analyst Intern at Internee.pk, I spearheaded eight data-driven projects utilizing Python, Excel, Power BI, and SQL, including internship course analysis, fraud detection, and student sentiment analysis, where I performed exploratory data analysis (EDA), built machine learning models, and applied NLP techniques to extract actionable insights.</p>
+                        </div>
+                    </div> <!-- /timeline-block -->
+                </div> <!-- /timeline-wrap -->
+            </div> <!-- /col-twelve -->
+        </div> <!-- /resume-timeline -->
+        
+        <div class="row resume-timeline">
+            <div class="col-twelve resume-header">
+                <h2>Education</h2>
+            </div> <!-- /resume-header -->
+
+            <div class="col-twelve">
+                <div class="timeline-wrap">
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+
+                        <div class="timeline-header">
+                            <h3>MS Data Science</h3>
+                            <p>Feb 2025 - Present</p>
+                        </div>
+
+                        <div class="timeline-content">
+                            <h4>Air University Islamabad</h4>
+                            <p>Pursuing MS in Data Science with expertise in statistical modeling, machine learning, and big data analytics. Proficient in Python, R, SQL, TensorFlow, and Scikit-learn for predictive modeling, time series forecasting, and deep learning applications.</p>
+                        </div>
+                    </div> <!-- /timeline-block -->
+
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+
+                        <div class="timeline-header">
+                            <h3>BS Mathematics</h3>
+                            <p>May 2013 - June 2014</p>
+                        </div>
+
+                        <div class="timeline-content">
+                            <h4>University of loralai</h4>
+                            <p>I recently completed my BS in Mathematics, where I developed a rigorous analytical foundation and strong quantitative skills. Throughout my degree, I gained experience in problem-solving, statistical analysis, and mathematical modeling, preparing me to tackle complex data challenges.</p>
+                        </div>
+                    </div> <!-- /timeline-block -->
+                </div> <!-- /timeline-wrap -->   			
+            </div> <!-- /col-twelve -->
+        </div> <!-- /resume-timeline -->
+    </section> <!-- /resume -->
+
+    <!-- Portfolio Section -->
+    <section id="projects">
+        <div class="row section-intro">
+            <div class="col-twelve">
+                <h5>My Projects</h5>
+                <h1 style="color: white;">Check Out Some of My Works.</h1>
+            </div>   		
+        </div> <!-- /section-intro--> 
+
+        <div class="row portfolio-content">
+            <div class="col-twelve">
+                <!-- portfolio-wrapper -->
+                <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
+                    <!-- Project 1 -->
+                    <div class="bgrid folio-item">
+                        <div class="item-wrap">
+                            <!-- Fixed URL using raw.githubusercontent.com -->
+                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/coffee_shop1.png" alt="Coffee Shop Sales Analysis">
+                            <a href="#modal-01" class="overlay">	                  	           
+                                <div class="folio-item-table">
+                                    <div class="folio-item-cell">
+                                        <h3 class="folio-title">Coffee shop sales analysis</h3>	     					    
+                                        <span class="folio-types">
+                                            Data analysis
+                                        </span>
+                                    </div>	                      	
+                                </div>                    
+                            </a>
+                        </div>	               
+                    </div> <!-- /folio-item -->
+
+                    <!-- Project 2 -->
+                    <div class="bgrid folio-item">
+                        <div class="item-wrap">
+                            <!-- Fixed URL using raw.githubusercontent.com -->
+                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/heart1.png" alt="Heart Disease Detection">
+                            <a href="#modal-02" class="overlay">              		                  
+                                <div class="folio-item-table">
+                                    <div class="folio-item-cell">
+                                        <h3 class="folio-title">Heart disease detection using machine learning</h3>	     					    
+                                        <span class="folio-types">
+                                            Machine learning
+                                        </span>		     		
+                                    </div> 	                      	
+                                </div>                    
+                            </a>
+                        </div>
+                    </div> <!-- /folio-item -->
+
+                    <!-- Project 3 -->
+                    <div class="bgrid folio-item">
+                        <div class="item-wrap">
+                            <!-- Fixed URL using raw.githubusercontent.com -->
+                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/ChatGPT%20Image%20Aug%205%2C%202025%2C%2005_22_19%20PM.png" alt="Netflix Analysis"> 
+                            <a href="#modal-04" class="overlay">                  	                 
+                                <div class="folio-item-table">
+                                    <div class="folio-item-cell">
+                                        <h3 class="folio-title">Netflix movies analysis</h3>	     					    
+                                        <span class="folio-types">
+                                            Data Analysis
+                                        </span>		     		
+                                    </div>  	                      	
+                                </div>                    
+                            </a>
+                        </div>
+                    </div> <!-- /folio-item -->     
+
+                    <!-- Project 4 -->
+                    <div class="bgrid folio-item">
+                        <div class="item-wrap">
+                            <!-- Fixed URL using raw.githubusercontent.com -->
+                            <img src="https://raw.githubusercontent.com/SaeedKhan-DS/DataScientist/main/images/retail_1.png" alt="Retail Sales Analysis">
+                            <a href="#modal-05" class="overlay">             		                  
+                                <div class="folio-item-table">
+                                    <div class="folio-item-cell">
+                                        <h3 class="folio-title">Retail sales analysis</h3>	     					    
+                                        <span class="folio-types">
+                                            Data analysis
+                                        </span>		     		
+                                    </div> 	                      	
+                                </div>                    
+                            </a>
+                        </div>
+                    </div> <!-- /folio-item -->
+                </div> <!-- /portfolio-wrapper --> 
+            </div>  <!-- /twelve -->   
+        </div> <!-- /portfolio-content --> 
+    </section> <!-- /portfolio -->
+
+    <!-- services Section -->
+    <section id="services">
+        <div class="row section-intro">
+            <div class="col-twelve">
+                <h5>Services</h5>
+                <h1>What Can I Do For You?</h1>
+            </div>   		
+        </div> <!-- /section-intro -->
+
+        <div class="row services-content">
+            <div class="services-list">
+                <div class="service">	
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>            
+                    <div class="service-content">	
+                        <h3>Time Series Analysis & Forecasting</h3>
+                        <p class="desc">I implement state-of-the-art forecasting models (ARIMA, Prophet, LSTM) to analyze temporal patterns in your business data. My approach captures seasonality, trends, and anomalies to generate accurate demand predictions.</p>
+                    </div> 
+                </div> <!-- /service -->
+
+                <div class="service">	
+                    <span class="icon"><i class="fas fa-brain"></i></span>                          
+                    <div class="service-content">	
+                        <h3>Predictive Analytics Solutions</h3>  
+                        <p class="desc">I build custom machine learning pipelines that transform your historical data into actionable future insights. After thorough exploratory analysis, I select and optimize the most suitable algorithms.</p>
+                    </div>	                          
+                </div> <!-- /service -->
+
+                <div class="service">
+                    <span class="icon"><i class="fas fa-users"></i></span>		            
+                    <div class="service-content">
+                        <h3>Customer Behavior Intelligence</h3>
+                        <p class="desc">Using RFM analysis, clustering (K-Means, DBSCAN), and sequential pattern mining, I decode your customer journey. My models identify high-value segments, predict churn risks, and uncover hidden behavioral patterns.</p> 
+                    </div> 	            	               
+                </div> <!-- /service -->
+
+                <div class="service">
+                    <span class="icon"><i class="fas fa-dashboard"></i></span>	              
+                    <div class="service-content">
+                        <h3>Business Intelligence & Dashboards</h3>
+                        <p class="desc">I build dynamic visualization platforms that transform your raw data into actionable insights. My dashboards provide real-time monitoring of key performance indicators with intuitive interfaces.</p> 
+                    </div>                
+                </div> <!-- /service -->
+
+                <div class="service">
+                    <span class="icon"><i class="fas fa-database"></i></span>	   	           
+                    <div class="service-content">
+                        <h3>Data Quality Assessment & Improvement</h3>
+                        <p class="desc">I conduct comprehensive audits of your data infrastructure to identify integrity issues and improvement opportunities. My systematic approach ensures your datasets are accurate, consistent, and ready for advanced analytics.</p> 
+                    </div>	               
+                </div> <!-- /service -->
+            </div> <!-- /services-list -->
+        </div> <!-- /services-content -->
+    </section> <!-- /services -->
 
 
 	<!-- stats Section
