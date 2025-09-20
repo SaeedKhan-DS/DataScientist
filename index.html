@@ -304,23 +304,7 @@
             background: #FF0077;
             border-radius: 10px;
             position: relative;
-        }
-        
-        /* Specific skill percentages */
-        .skill-90 .skill-progress {
-            width: 90%;
-        }
-        
-        .skill-85 .skill-progress {
-            width: 85%;
-        }
-        
-        .skill-80 .skill-progress {
-            width: 80%;
-        }
-        
-        .skill-75 .skill-progress {
-            width: 75%;
+            width: 0; /* Start at 0, will be animated by JS */
         }
         
         /* Resume Section */
@@ -679,10 +663,6 @@
                 left: -34px;
             }
         }
-           .skill-90 .skill-progress { width: 90%; }
-    .skill-85 .skill-progress { width: 85%; }
-    .skill-80 .skill-progress { width: 80%; }
-    .skill-75 .skill-progress { width: 75%; }
     </style>
 </head>
 <body>
@@ -785,7 +765,7 @@
             <div class="skill-category">
                 <h3>Technical Skills</h3>
                 <ul class="skill-bars">
-                    <li class="skill-item skill-90">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Data Wrangling</span>
                             <span class="skill-percent">90%</span>
@@ -794,7 +774,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-85">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Data Visualization</span>
                             <span class="skill-percent">85%</span>
@@ -803,7 +783,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-80">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Machine Learning</span>
                             <span class="skill-percent">80%</span>
@@ -812,7 +792,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-75">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Programming</span>
                             <span class="skill-percent">75%</span>
@@ -827,7 +807,7 @@
             <div class="skill-category">
                 <h3>Tools & Technologies</h3>
                 <ul class="skill-bars">
-                    <li class="skill-item skill-90">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">MS Excel</span>
                             <span class="skill-percent">90%</span>
@@ -836,7 +816,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-80">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Python</span>
                             <span class="skill-percent">80%</span>
@@ -845,7 +825,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-75">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">MySQL</span>
                             <span class="skill-percent">75%</span>
@@ -854,7 +834,7 @@
                             <div class="skill-progress"></div>
                         </div>
                     </li>
-                    <li class="skill-item skill-80">
+                    <li class="skill-item">
                         <div class="skill-info">
                             <span class="skill-name">Power BI</span>
                             <span class="skill-percent">80%</span>
@@ -1191,7 +1171,7 @@
             });
         });
         
-        // Animation for skill bars
+        // Animation for skill bars with correct widths
         document.addEventListener('DOMContentLoaded', function() {
             const skillItems = document.querySelectorAll('.skill-item');
             
@@ -1199,11 +1179,14 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const progressBar = entry.target.querySelector('.skill-progress');
-                        const width = progressBar.parentElement.classList.contains('skill-90') ? '90%' :
-                                    progressBar.parentElement.classList.contains('skill-85') ? '85%' :
-                                    progressBar.parentElement.classList.contains('skill-80') ? '80%' : '75%';
+                        const skillItem = entry.target;
+                        const percentElement = skillItem.querySelector('.skill-percent');
+                        const progressBar = skillItem.querySelector('.skill-progress');
                         
+                        // Extract the percentage from the text (remove the % sign)
+                        const width = percentElement.textContent.replace('%', '') + '%';
+                        
+                        // Reset and animate the progress bar
                         progressBar.style.width = '0';
                         setTimeout(() => {
                             progressBar.style.transition = 'width 1s ease-in-out';
